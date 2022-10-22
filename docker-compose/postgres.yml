@@ -1,0 +1,25 @@
+version: '2.1'
+services:
+  db:
+    image: "postgres:latest"
+    container_name: postgresDB
+    restart: always
+    volumes:
+      - /mnt/hdd/docker/postgres/postgres-data:/var/lib/postgresql/data
+      - /mnt/hdd/docker/postgres/tmp:/tmp
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=postgres_db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+
+#  pgadmin:
+#    image: biarms/pgadmin4
+#    container_name: pgadmin
+#    restart: always
+#    volumes:
+#      - /mnt/hdd/docker/pgadmin/pgadmin:/var/lib/pgadmin
+#      - /mnt/hdd/docker/pgadmin/tmp:/tmp
+#    ports:
+#      - 5050:5050

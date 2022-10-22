@@ -1,0 +1,16 @@
+version: "2"
+services:
+  homebridge:
+    container_name: homebridge
+    image: oznu/homebridge:raspberry-pi
+    restart: always
+    network_mode: host
+    volumes:
+      - /mnt/hdd/docker/homebridge/config:/homebridge
+      - /mnt/hdd/docker/homebridge/tmp:/tmp
+      - /home/pi/homebridge-dev:/home/homebridge-dev #FOR INSTALL CUSTOM PLUGINS
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - HOMEBRIDGE_CONFIG_UI=1
+      - HOMEBRIDGE_CONFIG_UI_PORT=8581

@@ -1,0 +1,13 @@
+version: "2"
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins4eval/jenkins
+    user: root
+    ports:
+      - 8085:8080
+      - 50000:50000
+    volumes:
+      - /mnt/hdd/docker/jenkins/jenkins_home:/var/jenkins_home
+      - /mnt/hdd/docker/jenkins/tmp:/tmp
+      - /var/run/docker.sock:/var/run/docker.sock #Docker integration

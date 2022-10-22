@@ -1,0 +1,20 @@
+version: "2.1"
+services:
+  jdownloader:
+    image: jaymoulin/jdownloader
+    container_name: jdownloader
+    restart: always
+    user: 1000:1000
+    volumes:
+      - /mnt/hdd/docker/jdownloader/config:/opt/JDownloader/cfg
+      - /mnt/hdd/docker/jdownloader/downloads:/opt/JDownloader/Downloads
+      - /mnt/hdd/docker/jdownloader/logs:/opt/JDownloader/logs
+      - /mnt/hdd/docker/jdownloader/tmp:/tmp
+      - /etc/localtime:/etc/localtime:ro
+    environment: 
+      - MYJD_USER: EMAIL
+      - MYJD_PASSWORD: PW
+      - MYJD_DEVICE_NAME: rpi4
+#            XDG_DOWNLOAD_DIR: /opt/JDownloader/Downloads #optional
+    ports:
+      - 3129:3129

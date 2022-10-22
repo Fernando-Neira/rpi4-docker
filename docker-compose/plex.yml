@@ -1,0 +1,31 @@
+version: "2.1"
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=0
+      - PGID=0
+      - VERSION=latest
+#      - PLEX_CLAIM= #optional
+    volumes:
+      - /mnt/hdd/docker/plex/config:/config
+      - /mnt/hdd/docker/plex/tmp:/tmp
+      - /mnt/hdd/media/series:/tv
+      - /mnt/hdd/media/peliculas:/movies
+    restart: always
+
+#  tautulli:
+#    image: ghcr.io/linuxserver/tautulli
+#    container_name: tautulli
+#    environment:
+#      - PUID=1000
+#      - PGID=1000
+#      - TZ=America/Santiago
+#    volumes:
+#      - /mnt/hdd/docker/tautulli/config:/config
+#      - /mnt/hdd/docker/tautulli/tmp:/tmp
+#    ports:
+#      - 8083:8181
+#    restart: always

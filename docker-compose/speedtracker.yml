@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  speedtest:
+      container_name: speedtest
+      image: henrywhitaker3/speedtest-tracker:latest-arm
+      ports:
+          - 8765:80
+      volumes:
+          - /mnt/hdd/docker/speedtracker/config:/config
+          - /mnt/hdd/docker/speedtracker/tmp:/tmp
+      environment:
+          - TZ=AMERICA/SANTIAGO
+          - PGID=1000
+          - PUID=1000
+          - OOKLA_EULA_GDPR=true
+      logging:
+          driver: "json-file"
+          options:
+              max-file: "10"
+              max-size: "200k"
+      restart: unless-stopped
