@@ -1,0 +1,13 @@
+version: "2"
+services:
+  uptimekuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    environment:
+      - TZ=America/Santiago
+    volumes:
+      - /mnt/hdd/docker/uptime-kuma/data:/app/data
+    ports:
+      - 8181:3001
+#      - 443:443 #Enable SSL
+    restart: always
