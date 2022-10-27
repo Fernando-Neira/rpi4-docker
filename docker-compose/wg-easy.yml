@@ -1,0 +1,21 @@
+version: "2.1"
+services:
+  wireguard:
+    image: weejewel/wg-easy:latest
+    container_name: wg-easy
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - TZ=America/Santiago
+      - WG_HOST=SERVER IP - DOMINIO
+      - PASSWORD=ADMIN-PWD
+    volumes:
+      - /mnt/hdd/docker/wg-easy/wireguard:/etc/wireguard
+      - /lib/modules:/lib/modules
+    ports:
+      - 51820:51820/udp
+      - 51821:51821/tcp
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
